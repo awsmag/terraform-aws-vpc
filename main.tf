@@ -3,7 +3,7 @@ data "aws_availability_zones" "availableAZ" {}
 
 # VPC
 resource "aws_vpc" "vpc" {
-  cidr_block                       = var.cidr
+  cidr_block                       = var.cidr_block
   instance_tenancy                 = "default"
   enable_dns_support               = true
   enable_dns_hostnames             = true
@@ -30,7 +30,7 @@ resource "aws_internet_gateway" "internetgateway" {
 # Public Subnet
 resource "aws_subnet" "publicsubnet" {
   count                   = 3
-  cidr_block              = tolist(var.publicSubnetCIDR)[count.index]
+  cidr_block              = tolist(var.public_subnet_cidr)[count.index]
   vpc_id                  = aws_vpc.vpc.id
   map_public_ip_on_launch = true
   availability_zone       = data.aws_availability_zones.availableAZ.names[count.index]
@@ -47,7 +47,7 @@ resource "aws_subnet" "publicsubnet" {
 # Private Subnet
 resource "aws_subnet" "privatesubnet" {
   count             = 3
-  cidr_block        = tolist(var.privateSubnetCIDR)[count.index]
+  cidr_block        = tolist(var.private_subnet_cidr)[count.index]
   vpc_id            = aws_vpc.vpc.id
   availability_zone = data.aws_availability_zones.availableAZ.names[count.index]
 
