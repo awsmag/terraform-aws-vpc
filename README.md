@@ -1,6 +1,6 @@
 # aws-vpc-terraform
 
-![awsmag.com](https://raw.githubusercontent.com/awsmag/terraform-aws-vpc/master/AWSMAG.com.png)
+![awsmag.com](https://awsmag.com/content/images/2022/08/AWSMAG.com-Banner-1.png)
 
 Terraform module to create a vpc with public and private subnets across multiple availability zones along with internet gateway and NAT gateway.
 
